@@ -2,21 +2,32 @@ import { useState } from 'react'
 import './App.css'
 
 function App() {
-  const [tasks, setTasks] = useState([])
+  const [tasks, setTasks] = useState(() => {
+    try {
+      return JSON.parse(localStorage.getItem('tasks')) ?? []
+    } catch {
+      return []
+    }
+  })
   const [input, setInput] = useState('')
+
+  const updateTasks = (next) => {
+    setTasks(next)
+    localStorage.setItem('tasks', JSON.stringify(next))
+  }
 
   const addTask = () => {
     if (!input.trim()) return
-    setTasks(prev => [...prev, { id: Date.now(), text: input.trim(), done: false }])
+    updateTasks([...tasks, { id: Date.now(), text: input.trim(), done: false }])
     setInput('')
   }
 
   const toggleTask = (id) => {
-    setTasks(prev => prev.map(t => t.id === id ? { ...t, done: !t.done } : t))
+    updateTasks(tasks.map(t => t.id === id ? { ...t, done: !t.done } : t))
   }
 
   const deleteTask = (id) => {
-    setTasks(prev => prev.filter(t => t.id !== id))
+    updateTasks(tasks.filter(t => t.id !== id))
   }
 
   const doneCount = tasks.filter(t => t.done).length
