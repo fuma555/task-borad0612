@@ -1,0 +1,177 @@
+.board {
+  max-width: 600px;
+  margin: 60px auto;
+  padding: 40px;
+  background: #1a1a2e;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.board-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #e0e0e0;
+  margin: 0 0 28px;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+/* 入力エリア */
+.input-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.task-input {
+  flex: 1;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 2px solid #444;
+  background: #0f0f1a;
+  color: #e0e0e0;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.task-input::placeholder {
+  color: #666;
+}
+
+.task-input:focus {
+  border-color: #7c6af7;
+}
+
+.add-btn {
+  padding: 12px 20px;
+  border-radius: 8px;
+  border: none;
+  background: #7c6af7;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  white-space: nowrap;
+}
+
+.add-btn:hover {
+  background: #9580ff;
+}
+
+.add-btn:active {
+  transform: scale(0.97);
+}
+
+/* タスクリスト */
+.task-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 10px;
+  background: #0f0f1a;
+  border: 2px solid #2a2a3e;
+  transition: border-color 0.3s, background 0.3s, box-shadow 0.3s;
+}
+
+/* 完了タスク：まぶしい金色 */
+.task-item.done {
+  background: #1a1500;
+  border-color: #c8a800;
+  box-shadow:
+    0 0 8px rgba(255, 215, 0, 0.35),
+    0 0 20px rgba(255, 180, 0, 0.2),
+    inset 0 0 12px rgba(255, 200, 0, 0.08);
+  animation: goldPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes goldPulse {
+  0%, 100% {
+    box-shadow:
+      0 0 8px rgba(255, 215, 0, 0.35),
+      0 0 20px rgba(255, 180, 0, 0.2),
+      inset 0 0 12px rgba(255, 200, 0, 0.08);
+  }
+  50% {
+    box-shadow:
+      0 0 14px rgba(255, 215, 0, 0.6),
+      0 0 36px rgba(255, 180, 0, 0.35),
+      inset 0 0 18px rgba(255, 200, 0, 0.15);
+  }
+}
+
+/* チェックボックス */
+.task-checkbox {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: #ffd700;
+  flex-shrink: 0;
+}
+
+/* タスクテキスト */
+.task-text {
+  flex: 1;
+  font-size: 16px;
+  color: #c8c8d8;
+  word-break: break-word;
+  transition: color 0.3s, text-shadow 0.3s;
+}
+
+.task-item.done .task-text {
+  color: #ffd700;
+  text-decoration: line-through;
+  text-decoration-color: rgba(255, 215, 0, 0.5);
+  text-shadow:
+    0 0 6px rgba(255, 215, 0, 0.8),
+    0 0 14px rgba(255, 180, 0, 0.5),
+    0 0 28px rgba(255, 140, 0, 0.3);
+}
+
+/* 削除ボタン */
+.delete-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  border: none;
+  background: transparent;
+  color: #666;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.2s, color 0.2s;
+}
+
+.delete-btn:hover {
+  background: rgba(255, 80, 80, 0.2);
+  color: #ff6b6b;
+}
+
+/* カウンター・空メッセージ */
+.task-count {
+  font-size: 14px;
+  color: #888;
+  text-align: right;
+  margin: 0 0 12px;
+}
+
+.empty-message {
+  text-align: center;
+  color: #555;
+  font-size: 15px;
+  margin-top: 20px;
+}
