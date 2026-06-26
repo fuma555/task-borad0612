@@ -53,6 +53,10 @@ git push origin main
   # GitHub で Pull Request を作成してマージ
   ```
 
+## GitHubリポジトリ
+
+https://github.com/fuma555/kakeibo
+
 ## デプロイ先
 
 - **本番 URL**: https://fuma555.github.io/task-borad0612/
